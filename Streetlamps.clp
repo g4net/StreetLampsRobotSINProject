@@ -1,6 +1,3 @@
-
-
-
 (deffunction start ()
         (reset)
 	(printout t "Maximum depth:= " )
