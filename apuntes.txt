@@ -1,0 +1,12 @@
+Static information:
+
+(warehouse 3 2) // warehouse is at position (3,2)
+(capacity-basket 3) // capacity of the robot's basket (must be 3)
+(grid-size 4 4) // size of the grid
+(... lamp 5 3 ... lamp 4 4 ... lamp 3 5 ...) // position of the lamps (one way)
+
+(... lamp l1 ... lamp l2 ... lamp l3 ... )
+(position l1 5 3) 
+(position l2 4 4)
+(position l3 3 5) 			// position of the lamps representation (another way)
+

@@ -8,10 +8,6 @@
 	       then    (set-strategy breadth)
 	       else   (set-strategy depth))
         (printout t " Execute run to start the program " crlf)
-    (printout t "Set grid size: \n Height:" crlf)
-    (bind ?h (read))
-    (printout t "Width: " crlf)
-    (bind ?w (read))
 	(assert (max-depth ?prof))
 	
 )
