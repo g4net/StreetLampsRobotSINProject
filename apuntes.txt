@@ -10,3 +10,4 @@ Static information:
 (position l2 4 4)
 (position l3 3 5) 			// position of the lamps representation (another way)
 
+We need to keep the level of the fact in order to return the depth level of the found solutionl.

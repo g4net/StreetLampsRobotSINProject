@@ -7,7 +7,16 @@
 	(if (= ?a 1)
 	       then    (set-strategy breadth)
 	       else   (set-strategy depth))
-        (printout t " Execute run to start the program " crlf)
+    (printout t " Execute run to start the program " crlf)
+
 	(assert (max-depth ?prof))
 	
 )
+
+
+(defrule warehouse_arrive
+	declare (salience 100)
+	?f1 <- (robot x ?x y ?y level ?n movement ?mov fact ?)
+	?f2 <- (warehouse ?x ?y)
+	=>
+	()
