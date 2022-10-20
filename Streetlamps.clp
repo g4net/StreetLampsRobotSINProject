@@ -1,7 +1,5 @@
 (deffacts
-	(lamp x 3 y 5 brokenbulbs 2)
-	(lamp x 5 y 5 brokenbulbs 3)
-	(lamp x 4 y 3 brokenbulbs 1)
+	(lamp x 3 y 5 brokenbulbs 2 lamp x 5 y 5 brokenbulbs 3 lamp x 4 y 3 brokenbulbs 1) 
 	(warehouse x 2 y 3)
 	(capacity-basket 3)
 	(grid-size 5 5)
@@ -36,48 +34,48 @@
 
 (defrule right
 	?f1 <- (robot x ?x y ?y level ?n movement ?mov basket ?b fact ?)
-	?f2 <- (lamp x ?xl y ?yl brokenbulbs ?)
+	?f2 <- (lamp $?A)
 	(max-depth ?prof)
+	(test (not (member (create$ x (+ ?x 1) y ?y) $?A)))
 	(test (<> (?x 5)))
 	(test (neq ?mov left))
 	(test (< ?n ?prof))
-	(test (and(<> (?xl (+ ?x 1))) (<> (?yl ?y))))
 	=>
 	(assert (robot x (+ ?x 1) y ?y level (+ ?n 1) movement right basket ?b fact ?))
 )
 
 (defrule up
 	?f1 <- (robot x ?x y ?y level ?n movement ?mov basket ?b fact ?)
-	?f2 <- (lamp x ?xl y ?yl brokenbulbs ?)
+	?f2 <- (lamp $?A)
 	(max-depth ?prof)
+	(test (not (member (create$ x ?x y (+ ?y 1) $?A)))
 	(test (<> (?y 5)))
 	(test (neq ?mov down))
 	(test (< ?n ?prof))
-	(test (and(<> (?yl (+ ?y 1))) (<> (?xl ?x))))
 	=>
 	(assert (robot x ?x y (+ ?y 1) level (+ ?n 1) movement up basket ?b fact ?))
 )
 
 (defrule down
 	?f1 <- (robot x ?x y ?y level ?n movement ?mov basket ?b fact ?)
-	?f2 <- (lamp x ?xl y ?yl brokenbulbs ?)
+	?f2 <- (lamp $?A)
 	(max-depth ?prof)
+	(test (not (member (create$ x ?x y (- ?y 1) $?A)))
 	(test (<> (?y 1)))
 	(test (neq ?mov up))
 	(test (< ?n ?prof))
-	(test (and(<> (?yl (- ?y 1))) (<> (?xl ?x))))
 	=>
 	(assert (robot x ?x y (- ?y 1) level (+ ?n 1) movement down basket ?b fact ?))
 )
 
 (defrule left
 	?f1 <- (robot x ?x y ?y level ?n movement ?mov basket ?b fact ?)
-	?f2 <- (lamp x ?xl y ?yl brokenbulbs ?)
+	?f2 <- (lamp $?A)
 	(max-depth ?prof)
+	(test (not (member (create$ x (- ?x 1) y ?y) $?A)))
 	(test (<> (?x 1)))
 	(test (neq ?mov right))
 	(test (< ?n ?prof))
-	(test (and(<> (?xl (- ?x 1))) (<> (?yl ?y))))
 	=>
 	(assert (robot x (- ?x 1) y ?y level (+ ?n 1) movement left basket ?b fact ?))
 )
